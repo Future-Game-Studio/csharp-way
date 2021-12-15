@@ -26,9 +26,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
         }
         public static void Main(string[] args)
-        {
-            //Environment.GetEnvironmentVariables();
-
+        { 
             string[] args2 = Environment.GetCommandLineArgs();
 
             var count = args.Length;

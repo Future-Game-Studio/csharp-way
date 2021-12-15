@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "fudge.auto-using",
+        "ms-dotnettools.csharp",
+        "roadsidejesus.csharp-helper",
+        "k--kato.docomment",
+        "matijarmk.dotnet-core-commands",
+        "eppz.eppz-code",
+        "mhutchie.git-graph",
+        "codezombiech.gitignore",
+        "tahabasri.snippets",
+        "wayou.vscode-todo-highlight"
+    ]
+}
