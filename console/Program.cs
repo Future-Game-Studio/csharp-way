@@ -1,51 +1,51 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
-    public class Program
+    public partial class Program
     {
-        interface ICounter
-        {
-            int Count { get; set; }
-        }
-
-        class StringCounter : ICounter
-        {
-            public int Count { get; set; }
-        }
-
-        class Counter : ICounter
-        {
-            private int _count;
-
-            public int Count
-            {
-                get => _count;
-                set => _count = value;
-            }
-        }
         public static void Main(string[] args)
-        { 
-            string[] args2 = Environment.GetCommandLineArgs();
+        {
+            var exp = new ExceptionsShowcase();
 
-            var count = args.Length;
+            var fruits = new List<Fruits>(); 
 
-            var counters = ParseParams<Counter>(args,
-                    new Counter[count].Select(x => new Counter()).ToArray());
+            fruits.Add(new Apple());
+            fruits.Add(new Grapes());
+            //  fruits.Add(new Car());
 
-            int index = 0;
-            foreach (var item in counters)
+            var box = new Box(fruits);
+            //  box.Add(new Car());
+
+            var found = box.SearchShape("Sphere");
+
+            var logger = new Logger<Fruits>();
+
+            foreach (var item in box)
             {
-                Console.WriteLine($"Item {index++} {item.Count}");
+                logger.Log(item);
             }
 
-            string valueStr = "Params";
 
-            if (valueStr is not null)
+            if (found != null)
             {
-                
+                found.Log();
             }
+            else
+            {
+                // did not found anything(
+            }
+
+            if (box.TrySearchShape("Sphere", out var fruit2))
+            {
+                // do something with object
+            }
+            else
+            {
+                // did not found anything(
+            }
+
         }
 
         static T[] ParseParams<T>(string[] args, T[] counters) where T : ICounter
@@ -54,7 +54,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
             {
                 for (int i = 0; i < args.Length; i++)
                 {
-                    if (int.TryParse(args[i], out var number))
+                    int number;
+                    if (int.TryParse(args[i], out number))
                     {
                         counters[i].Count = number;
                     }
