@@ -1,73 +1,76 @@
 using System;
 
-namespace MyApp 
+namespace Playground.OOP
 {
-    public partial class Program
+    #region Counters
+    internal interface ICounter
     {
-        #region Counters
-        interface ICounter
-        {
-            int Count { get; set; }
-        }
+        int Count { get; set; }
+    }
 
-        interface ITitle
-        {
-            int FullName { get; set; }
-        }
+    internal interface ITitle
+    {
+        int FullName { get; set; }
+    }
 
-        class StringCounter : ICounter
-        {
-            public int Count { get; set; }
-        }
-        class Counter : ICounter, ITitle
-        {
-            private int _count;
+    internal class StringCounter : ICounter
+    {
+        public int Count { get; set; }
+    }
 
-            public int Count
-            {
-                get => _count;
-                set => _count = value;
-            }
-            int ITitle.FullName { get; set; }
-        }
+    internal class Counter : ICounter, ITitle
+    {
+        private int _count;
 
-#endregion
-
-        public abstract class Fruits : IObject
+        public int Count
         {
-            public abstract string Shape { get; set; }
+            get => _count;
+            set => _count = value;
+        }
+        int ITitle.FullName { get; set; }
+    }
 
-            public void Log()
-            {
-                Console.WriteLine("Type: " + GetType().Name + " Shape: " + Shape);
-            }
-        }
+    #endregion
 
-        class Apple : Fruits
-        {
-            public override string Shape { get; set; } = "Sphere";
-        }
-        class Grapes : Fruits
-        {
-            public override string Shape { get; set; } = "Multiple";
+    public abstract class Fruits : IObject
+    {
+        public abstract string Shape { get; set; }
 
-        }
-        class Car : IObject
+        public void Log()
         {
-            public int Wheels { get; set; }
-            public string Dimentions { get; set; } = "";
+            Console.WriteLine("Type: " + GetType().Name + " Shape: " + Shape);
         }
+    }
 
-        class Logger<T> where T : IObject
-        {
-            public void Log(IObject obj)
-            {
-                Console.WriteLine("Logger => " + obj.GetType().Name);
-            }
-        }
+    internal class Apple : Fruits
+    {
+        public override string Shape { get; set; } = "Sphere";
+    }
 
-        interface IObject
+    internal class Grapes : Fruits
+    {
+        public override string Shape { get; set; } = "Multiple";
+
+    }
+
+    internal class Car : IObject
+    {
+        public int Wheels { get; set; }
+        public string Dimentions { get; set; } = "";
+    }
+
+    internal class Logger<T> where T : IObject
+    {
+        public void Log(IObject obj)
         {
+            Console.WriteLine("Logger => " + obj.GetType().Name);
         }
+    }
+
+    /// <summary>
+    /// Base object marker
+    /// </summary>
+    internal interface IObject
+    {
     }
 }

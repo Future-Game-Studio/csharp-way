@@ -1,22 +1,24 @@
-﻿using System;
+﻿using Playground.OOP;
+using System;
 using System.Collections.Generic;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace Playground // Note: actual namespace depends on the project name.
 {
     public partial class Program
     {
+        /// <summary>
+        /// Entry point
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            var exp = new ExceptionsShowcase();
-
-            var fruits = new List<Fruits>(); 
-
-            fruits.Add(new Apple());
-            fruits.Add(new Grapes());
-            //  fruits.Add(new Car());
+            var fruits = new List<Fruits>
+            {
+                new Apple(),
+                new Grapes()
+            };
 
             var box = new Box(fruits);
-            //  box.Add(new Car());
 
             var found = box.SearchShape("Sphere");
 
@@ -37,7 +39,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 // did not found anything(
             }
 
-            if (box.TrySearchShape("Sphere", out var fruit2))
+            if (box.TrySearchShape("Sphere", out _))
             {
                 // do something with object
             }
@@ -46,23 +48,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 // did not found anything(
             }
 
-        }
-
-        static T[] ParseParams<T>(string[] args, T[] counters) where T : ICounter
-        {
-            if (args.Length > 0)
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    int number;
-                    if (int.TryParse(args[i], out number))
-                    {
-                        counters[i].Count = number;
-                    }
-                }
-            }
-
-            return counters;
         }
     }
 }

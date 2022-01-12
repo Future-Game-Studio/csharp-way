@@ -1,13 +1,10 @@
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace Playground.Exceptions // Note: actual namespace depends on the project name.
 {
-    public partial class Program
+    internal class ExceptionsShowcase
     {
-        class ExceptionsShowcase
+        public int Run(int a, int b)
         {
-            public int Run(int a, int b)
-            {
-                return a / b;
-            }
+            return a / b;
         }
     }
 }

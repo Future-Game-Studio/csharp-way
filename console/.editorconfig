@@ -1,0 +1,19 @@
+﻿[*.cs]
+
+# IDE0059: Unnecessary assignment of a value
+dotnet_diagnostic.IDE0059.severity = error
+
+# IDE0051: Remove unused private members
+dotnet_diagnostic.IDE0051.severity = error
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = silent
+
+# IDE0090: Use 'new(...)'
+csharp_style_implicit_object_creation_when_type_is_apparent = false
+
+# IDE0008: Use explicit type
+csharp_style_var_elsewhere = true
+
+# IDE0008: Use explicit type
+csharp_style_var_when_type_is_apparent = true
